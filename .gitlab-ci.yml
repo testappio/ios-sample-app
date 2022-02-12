@@ -28,4 +28,4 @@ upload-job:
     - export INSTALL_DIR=$CI_BUILDS_DIR
     - curl -Ls https://github.com/Massad/cli/releases/latest/download/install | bash
   script:
-    - $CI_BUILDS_DIR/ta-cli publish --api_token=$api_token --app_id=$app_id --release=$release --apk=$CI_BUILDS_DIR/sample-app.apk --ipa=$CI_BUILDS_DIR/sample-app.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
+    - $CI_BUILDS_DIR/ta-cli publish --api_token=$TESTAPP_API_TOKEN --app_id=$app_id --release=$release --apk=$CI_BUILDS_DIR/sample-app.apk --ipa=$CI_BUILDS_DIR/sample-app.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
