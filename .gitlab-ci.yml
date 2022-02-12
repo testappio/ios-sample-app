@@ -2,25 +2,30 @@ stages:
   - build
   - test
   - deploy
+variables:
+  app_id: zmyowzV25M
+  release: both
+  release_notes: "for test"
+  notify: "false"
 
 build1:
   stage: build
   script:
     - echo "Do your build here"
+  artifacts:
+    paths:
+      - ./sample-app.apk
+      - ./sample-app.ipa
 
-test1:
+test-job:
   stage: test
   script:
-    - echo "Do a test here"
-    - echo "For example run a test suite"
-
-test2:
-  stage: test
-  script:
-    - echo "Do another parallel test here"
-    - echo "For example run a lint test"
+    - echo "Do your test here"
 
 upload-job:
   stage: deploy
+  before_script:
+    - export INSTALL_DIR=$CI_BUILDS_DIR
+    - curl -Ls https://github.com/Massad/cli/releases/latest/download/install | bash
   script:
-    - echo "Do your deploy here"
+    - ./ta-cli publish --api_token=$api_token --app_id=$app_id --release=$release --apk=$CI_BUILDS_DIR/sample-app.apk --ipa=$CI_BUILDS_DIR/sample-app.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
