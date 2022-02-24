@@ -28,7 +28,7 @@ archive-job:
     - jianbo-macos
 
 upload-job:
-  stage: deploy
+  stage: upload
   before_script:
     - export INSTALL_DIR=$CI_PROJECT_DIR
     - curl -Ls https://github.com/Massad/cli/releases/latest/download/install | bash
