@@ -1,26 +1,31 @@
 stages:
   - build
-  - test
-  - deploy
+  - archive
+  - upload
 variables:
   app_id: zmyowzV25M
-  release: both
+  release: ios
   release_notes: "for test"
   notify: "false"
 
 build1:
   stage: build
   script:
-    - echo "Do your build here"
+    - xcodebuild clean -project test.xcodeproj -scheme test
+    - xcodebuild test -project test.xcodeproj -scheme test -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.2'
+  tags:
+    - jianbo-macos
+
+archive-job:
+  stage: archive
+  script:
+    - xcodebuild clean archive -archivePath build/test -scheme test
+    - xcodebuild -exportArchive -archivePath "build/test.xcarchive" -exportPath "build/test.ipa" -exportOptionsPlist "ExportOptions.plist"
   artifacts:
     paths:
-      - ./sample-app.apk
-      - ./sample-app.ipa
-
-test-job:
-  stage: test
-  script:
-    - echo "Do your test here"
+      - build/test.ipa
+  tags:
+    - jianbo-macos
 
 upload-job:
   stage: deploy
@@ -28,6 +33,6 @@ upload-job:
     - export INSTALL_DIR=$CI_PROJECT_DIR
     - curl -Ls https://github.com/Massad/cli/releases/latest/download/install | bash
   script:
-    - $CI_PROJECT_DIR/ta-cli publish --api_token=$TESTAPP_API_TOKEN --app_id=$app_id --release=$release --apk=$CI_PROJECT_DIR/sample-app.apk --ipa=$CI_PROJECT_DIR/sample-app.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
+    - $CI_PROJECT_DIR/ta-cli publish --api_token=$TESTAPP_API_TOKEN --app_id=$app_id --release=$release  --ipa=$CI_PROJECT_DIR/build/test.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
   tags:
     - linux
