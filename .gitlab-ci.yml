@@ -11,15 +11,15 @@ variables:
 build1:
   stage: build
   script:
-    - xcodebuild clean -project test.xcodeproj
-    - xcodebuild test -project test.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.2'
+    - xcodebuild clean -project test.xcodeproj -scheme test
+    - xcodebuild test -project test.xcodeproj -scheme test -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.2'
   tags:
     - jianbo-macos
 
 archive-job:
   stage: archive
   script:
-    - xcodebuild clean archive -archivePath build/test
+    - xcodebuild clean archive -archivePath build/test -scheme test
     - xcodebuild -exportArchive -archivePath "build/test.xcarchive" -exportPath "build/test.ipa" -exportOptionsPlist "ExportOptions.plist"
   artifacts:
     paths:
