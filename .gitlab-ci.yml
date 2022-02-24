@@ -20,10 +20,10 @@ archive-job:
   stage: archive
   script:
     - xcodebuild clean archive -archivePath build/test -scheme test
-    - xcodebuild -exportArchive -archivePath "build/test.xcarchive" -exportPath "build/test.ipa" -exportOptionsPlist "ExportOptions.plist"
+    - xcodebuild -exportArchive -archivePath "build/test.xcarchive" -exportPath "build/test" -exportOptionsPlist "ExportOptions.plist"
   artifacts:
     paths:
-      - build/test.ipa
+      - build/test
   tags:
     - jianbo-macos
 
@@ -33,6 +33,6 @@ upload-job:
     - export INSTALL_DIR=$CI_PROJECT_DIR
     - curl -Ls https://github.com/Massad/cli/releases/latest/download/install | bash
   script:
-    - $CI_PROJECT_DIR/ta-cli publish --api_token=$TESTAPP_API_TOKEN --app_id=$app_id --release=$release  --ipa=$CI_PROJECT_DIR/build/test.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
+    - $CI_PROJECT_DIR/ta-cli publish --api_token=$TESTAPP_API_TOKEN --app_id=$app_id --release=$release  --ipa=$CI_PROJECT_DIR/build/test/Apps/test.ipa --release_notes=$release_notes --notify=$notify --source=gitlab
   tags:
     - linux
