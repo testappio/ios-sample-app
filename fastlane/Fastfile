@@ -1,0 +1,35 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and upload to Testapp.io"
+  before_all do
+    setup_circle_ci
+  end
+
+  lane :development do
+    match(type: "development")
+    gym(export_method: "development")
+    upload_to_testappio(
+      api_token: "5800dfba-2b98-4b5c-937c-fc2382f54b1a",
+      app_id: "zmyowzV25M",
+      release_notes: "For test only",
+      notify: "false",
+      source: "CircleCI",
+    )
+  end
+end

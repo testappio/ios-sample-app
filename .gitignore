@@ -1,3 +1,7 @@
 build/
 test.xcodeproj/project.xcworkspace/xcuserdata/jianbo.xcuserdatad/WorkspaceSettings.xcsettings
 test.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+vendor
+*.zip
+*.ipa
+report.xml
