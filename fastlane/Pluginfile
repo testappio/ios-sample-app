@@ -2,6 +2,6 @@
 #
 # Ensure this file is checked in to source control!
 
-# gem 'fastlane-plugin-testappio', git: 'https://github.com/Jianbo-Zhu/testappio-fastlane-plugin.git'
+gem 'fastlane-plugin-testappio', git: 'https://github.com/Jianbo-Zhu/testappio-fastlane-plugin.git'
 
-gem 'fastlane-plugin-testappio', path: '../../../testappio-fastlane-plugin/'
+# gem 'fastlane-plugin-testappio', path: '../../../testappio-fastlane-plugin/'
