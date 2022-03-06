@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 12.5.1 # Specify the Xcode version to use
+      xcode: 13.2.1	 # Specify the Xcode version to use
     steps:
       - checkout
       - run: gem install bundler:2.3.3
