@@ -1,0 +1,7 @@
+language: swift
+osx_image: xcode13.3
+
+install:
+  - bundle install
+script: 
+ - bundle exec fastlane ios development
