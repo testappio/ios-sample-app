@@ -1,5 +1,5 @@
-git_url("git@github.com:Jianbo-Zhu/my-certificates.git") # for Circle CI and Github Action samples
-# git_url("https://github.com/Jianbo-Zhu/my-certificates.git") # for Travis CI sample
+# git_url("git@github.com:Jianbo-Zhu/my-certificates.git") # for Circle CI 
+git_url("https://github.com/Jianbo-Zhu/my-certificates.git") # for Travis CI/Gibhub samples
 
 storage_mode("git")
 
