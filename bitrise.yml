@@ -1,0 +1,44 @@
+---
+format_version: '11'
+default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
+project_type: ios
+app:
+  envs:
+  - FASTLANE_XCODE_LIST_TIMEOUT: '120'
+  - opts:
+      is_expand: false
+    FASTLANE_WORK_DIR: .
+  - opts:
+      is_expand: false
+    FASTLANE_LANE: ios development
+  - opts:
+      is_expand: false
+    TESTAPPIO_NOTIFY: 'true'
+  - opts:
+      is_expand: false
+    MATCH_SKIP_CERTIFICATE_MATCHING: 'true'
+workflows:
+  primary:
+    steps:
+    - activate-ssh-key@4:
+        run_if: '{{getenv "SSH_RSA_PRIVATE_KEY" | ne ""}}'
+    - git-clone@6: {}
+    - script@1:
+        inputs:
+        - content: |-
+            #!/usr/bin/env bash
+            # fail if any commands fails
+            set -e
+            # debug log
+            set -x
+
+            # write your script here
+            echo "machine github.com login $GITHUB_API_TOKEN" >> ~/.netrc
+    - fastlane@3:
+        inputs:
+        - lane: $FASTLANE_LANE
+        - work_dir: $FASTLANE_WORK_DIR
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.2.x
+    machine_type_id: g2.4core
