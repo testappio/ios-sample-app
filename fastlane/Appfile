@@ -1,8 +1,8 @@
-app_identifier("testapp.io.car-wash") # The bundle identifier of your app
-apple_id("lemurzjb@gmail.com") # Your Apple email address
+app_identifier("") # The bundle identifier of your app
+apple_id("") # Your Apple email address
 
-itc_team_id("120235889") # App Store Connect Team ID
-team_id("WSNDX2Q2K9") # Developer Portal Team ID
+itc_team_id("") # App Store Connect Team ID
+team_id("") # Developer Portal Team ID
 
 # For more information about the Appfile, see:
 #     https://docs.fastlane.tools/advanced/#appfile
