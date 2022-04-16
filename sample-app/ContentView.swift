@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  test
+//  sample-app
 //
-//  Created by 朱建波 on 2022/2/20.
+//  Created by Omar Masad on 17/04/2022.
 //
 
 import SwiftUI

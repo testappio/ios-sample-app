@@ -1,14 +1,14 @@
 //
-//  testApp.swift
-//  test
+//  sample_appApp.swift
+//  sample-app
 //
-//  Created by 朱建波 on 2022/2/20.
+//  Created by Omar Masad on 17/04/2022.
 //
 
 import SwiftUI
 
 @main
-struct testApp: App {
+struct sample_appApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
