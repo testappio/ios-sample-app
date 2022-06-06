@@ -1,0 +1,8 @@
+workflows:
+  pack-ipk-testapp:
+    instance_type: mac_pro
+    environment:
+      xcode: 13.3
+    scripts: 
+      - name: build and upload to testapp.io
+        script: bundle exec fastlane ios development --verbose
