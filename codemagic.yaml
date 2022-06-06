@@ -1,6 +1,6 @@
 workflows:
   pack-ipk-testapp:
-    instance_type: mac_pro
+    instance_type: mac_mini
     environment:
       xcode: 13.3
     scripts: 
