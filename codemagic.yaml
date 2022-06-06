@@ -3,6 +3,8 @@ workflows:
     instance_type: mac_mini
     environment:
       xcode: 13.3
+      groups:
+        - default
     scripts: 
       - name: build and upload to testapp.io
         script: |
