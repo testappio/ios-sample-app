@@ -1,4 +1,4 @@
-# TestApp.io Sample iOS app
+# TestApp.io sample iOS app
 
 
 #### This repo includes the following examples:
