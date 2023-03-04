@@ -1,0 +1,11 @@
+trigger:
+- main
+
+pool:
+  vmImage: macOS-12
+
+steps:
+- script: |
+    bundle install
+    bundle exec fastlane ios development
+  displayName: 'Execute the lane'
