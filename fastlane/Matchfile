@@ -1,4 +1,4 @@
-git_url("https://github.com/testappio/ios-certificates.git") # for Travis CI/Gibhub samples
+git_url(${{ secrets.MATCH_GIT_URL }}) # for Travis CI/Gibhub samples
 
 storage_mode("git")
 
