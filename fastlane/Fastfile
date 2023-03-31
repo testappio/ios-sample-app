@@ -22,10 +22,10 @@ platform :ios do
   end
 
   lane :development do
-    match(type: "development")
-    gym(export_method: "development")
+    match(type: "adhoc")
+    gym(export_method: "ad-hoc")
     upload_to_testappio(
-      release_notes: "For test only"
+      release_notes: "For testing only..."
     )
   end
 end
