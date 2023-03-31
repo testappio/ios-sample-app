@@ -5,3 +5,5 @@ vendor
 *.zip
 *.ipa
 report.xml
+fastlane/.env.development
+.DS_Store
