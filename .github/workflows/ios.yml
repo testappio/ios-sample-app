@@ -1,16 +1,15 @@
-name: Workflow to upload IPA to TestApp.io
+name: Build & upload IPA to TestApp.io
 
 on:
-  push:
-    branches: [ deploy ]
-  pull_request:
-    branches: [ deploy ]
   workflow_dispatch:
-    
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   ios:
-    name: Build and Test default scheme using any available iPhone simulator
+    name: Build and upload to TestApp.io
     runs-on: macos-latest
 
     steps:
@@ -20,7 +19,6 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
-          bundler-cache: true
       - uses: maierj/fastlane-action@v2.2.0
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
