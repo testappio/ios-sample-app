@@ -1,0 +1,17 @@
+stages:
+  - build
+variables:
+  release: "ios"
+  release_notes: "My release notes here..."
+  notify: false
+  ProjectName: "myproject"
+  SchemeName: "myschema"
+  
+
+all-in-one-job:
+  stage: build
+  script:
+    - bundle install
+    - bundle exec fastlane adhoc
+  tags:
+    - ipa-macos
