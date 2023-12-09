@@ -21,8 +21,6 @@ In this example we are using the Expo EAS build tool to locally build the app on
 
 EAS is using fastlane under the hood, and is automatically preparing the credentials and signing the build for you. For more information about the local EAS iOS build process, refer to the [expo docs](https://docs.expo.dev/build-reference/ios-builds/).
 
-- TODO: where are the local builds getting the credentials from, for signing the app? https://docs.expo.dev/app-signing/syncing-credentials/#downloading-credentials
-
 #### [Filters](https://support.circleci.com/hc/en-us/articles/115015953868-Filter-workflows-by-branch-)
 
 In the example configuration, if you look at the workflows in the config, we have a filter to only start the pipeline when the staging branch is changing. If you need to listen for code changes in other branches, just change this value to match your own branch name
