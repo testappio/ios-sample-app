@@ -19,7 +19,7 @@ jobs:
           command: npx eas-cli build -p ios --profile staging --local --non-interactive --clear-cache --output "./ipa/ios-staging-build.ipa"
 
       - run:
-          name: upload to TestApp.io
+          name: Upload to TestApp.io
           command: |
             export INSTALL_DIR=/tmp
             curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
