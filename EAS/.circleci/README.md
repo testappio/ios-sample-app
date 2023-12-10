@@ -1,10 +1,10 @@
-## How to
+## Connect Expo EAS with CircleCI
 
 In order to automatically trigger the CircleCI pipeline, we need to connect our CircleCI project to our repository.
 
-When creating a new CircleCI project, you will have the option to connect a specific repository to the CircleCI project. After the 2 are linked, we just need to create the secrets/environment variables for the CircleCI project.
+When creating a new CircleCI project, you will have the option to connect a specific repository to the CircleCI project. After the two are linked, we just need to create the secrets/environment variables for the CircleCI project.
 
-For more info about creating a CircleCI project, see [this](https://circleci.com/docs/create-project/).
+For more information about creating a CircleCI project, see [this](https://circleci.com/docs/create-project/).
 
 ### TestApp.io / CircleCI Secrets/Environment variables
 
@@ -13,13 +13,13 @@ In order to know where to upload the EAS build, you need to provide the secrets/
 **The following environment variables needs to be set:**
 
 - [TESTAPPIO_API_TOKEN](https://portal.testapp.io/settings/api-credentials)
-- [TESTAPPIO_APP_ID](https://portal.testapp.io/apps)
+- [TESTAPPIO_APP_ID](https://portal.testapp.io/apps?to=app-integrations&tab=releases)
 
 ### The build
 
 In this example we are using the Expo EAS build tool to locally build the app on a CircleCI macOS virtual machine.
 
-EAS is using fastlane under the hood, and is automatically preparing the credentials and signing the build for you. For more information about the local EAS iOS build process, refer to the [expo docs](https://docs.expo.dev/build-reference/ios-builds/).
+EAS is using Fastlane under the hood and is automatically preparing the credentials and signing the build for you. For more information about the local EAS iOS build process, refer to the [expo docs](https://docs.expo.dev/build-reference/ios-builds/).
 
 #### [Filters](https://support.circleci.com/hc/en-us/articles/115015953868-Filter-workflows-by-branch-)
 
