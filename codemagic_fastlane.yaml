@@ -1,0 +1,16 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    instance_type: mac_mini_m1 # Specify the instance type, example: mac_mini_m1
+
+    environment:
+      xcode: latest # Specify Xcode version, example: 13.3
+      groups:
+        - default # Example group, add your API tokens here TESTAPPIO_API_TOKEN and TESTAPPIO_APP_ID
+
+    # BUILD AND UPLOAD
+    scripts: 
+      - name: Build and upload to TestApp.io
+        script: |
+          bundle install
+          bundle exec fastlane ios development --verbose
