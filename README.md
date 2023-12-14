@@ -12,7 +12,7 @@
 - [Azure Pipeline](https://github.com/testappio/ios-sample-app/blob/integration-azure/azure-pipelines.yml)
 - [Codemagic CI/CD](https://github.com/testappio/ios-sample-app/blob/main/codemagic.yaml)
 - [Codemagic CI/CD (Fastlane)](https://github.com/testappio/ios-sample-app/blob/main/codemagic_fastlane.yaml)
-- [EAS](eas/)
+- [Expo EAS (Circle CI)](https://github.com/testappio/ios-sample-app/tree/main/EAS/.circleci)
 
 ---
 
