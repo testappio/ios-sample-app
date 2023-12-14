@@ -1,6 +1,5 @@
 # TestApp.io sample iOS app
 
-
 #### This repo includes the following examples:
 
 - [Fastlane](fastlane)
@@ -13,7 +12,7 @@
 - [Azure Pipeline](https://github.com/testappio/ios-sample-app/blob/integration-azure/azure-pipelines.yml)
 - [Codemagic CI/CD](https://github.com/testappio/ios-sample-app/blob/main/codemagic.yaml)
 - [Codemagic CI/CD (Fastlane)](https://github.com/testappio/ios-sample-app/blob/main/codemagic_fastlane.yaml)
-
+- [EAS](eas/)
 
 ---
 
