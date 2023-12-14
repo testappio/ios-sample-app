@@ -8,7 +8,7 @@ workflows:
       groups:
         - default # Example group, add your API tokens here TESTAPPIO_API_TOKEN and TESTAPPIO_APP_ID
 
-    # BUILD AND UPLOAD PHASE
+    # BUILD AND UPLOAD
     scripts: 
       - name: Build and upload to TestApp.io
         script: |
