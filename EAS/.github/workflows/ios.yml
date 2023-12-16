@@ -37,5 +37,5 @@ jobs:
           file: ./ipa/ios-staging-build.ipa
           release_notes: ''
           git_release_notes: true
-          include_git_commit_id: false
+          include_git_commit_id: true
           notify: true
