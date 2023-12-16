@@ -1,5 +1,4 @@
-name: iOS Staging Build (AdHoc)
-
+name: Upload IPA to TestApp.io
 on:
   workflow_dispatch:
 
@@ -30,13 +29,13 @@ jobs:
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
-      - name: 🌐 Upload IPA to testapp.io
+      - name: 🌐 Upload IPA to TestApp.io
         uses: testappio/github-action@v5
         with:
           api_token: ${{ secrets.TESTAPPIO_API_TOKEN }}
           app_id: ${{ secrets.TESTAPPIO_APP_ID }}
-          file: ipa/ios-staging-build.ipa
-          release_notes: 'Testing manual release notes...'
+          file: ./ipa/ios-staging-build.ipa
+          release_notes: ''
           git_release_notes: true
           include_git_commit_id: false
           notify: true
