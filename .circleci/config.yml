@@ -1,0 +1,42 @@
+version: 2.1
+
+orbs:
+  ios: circleci/ios@1.0.0 # Ensure you're using the appropriate version of the iOS orb
+
+jobs:
+  build-and-upload-ios:
+    macos:
+      xcode: "13.4.1" # Specify the Xcode version you need
+    environment: # You can change the following
+      release_notes: ""
+      git_release_notes: true
+      git_commit_id: false
+      notify: true
+    steps:
+      - checkout
+
+      # Uncomment one of the following lines depending on whether you want a debug or release build.
+      # For a debug build:
+      - run:
+          name: Assemble debug build
+          command: |
+            xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme -sdk iphoneos -configuration Debug build
+
+      # For a release build:
+      # - run:
+      #     name: Assemble release build
+      #     command: |
+      #       xcodebuild -workspace YourWorkspace.xcworkspace -scheme YourScheme -sdk iphoneos -configuration Release build
+
+      # Upload to TestApp.io
+      - run:
+          name: Upload to TestApp.io
+          command: |
+            export INSTALL_DIR=/tmp
+            curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
+            $INSTALL_DIR/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="android" --apk=./app/build/outputs/apk/debug/app-debug.apk --release_notes=$release_notes --notify=$notify --git_release_notes=$git_release_notes --git_commit_id=$git_commit_id --source="Circle CI"
+
+workflows:
+  default:
+    jobs:
+      - build-and-upload-ios
