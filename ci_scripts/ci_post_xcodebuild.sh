@@ -7,6 +7,6 @@ if [ "$CI_PRODUCT_PLATFORM" = "iOS" ]; then
 
     chmod +x ${INSTALL_DIR}/ta-cli
 
-    ${INSTALL_DIR}/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --ipa=$CI_AD_HOC_SIGNED_APP_PATH/sample-app.ipa --release_notes=$release_notes --notify=$notify --source="Xcode Cloud"
+    ${INSTALL_DIR}/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --ipa=$CI_AD_HOC_SIGNED_APP_PATH/sample-app.ipa --release_notes="" --git_release_notes=true --git_commit_id=true --notify=true --source="Xcode Cloud"
 
 fi
