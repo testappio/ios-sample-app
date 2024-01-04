@@ -1,11 +1,14 @@
 if [ "$CI_PRODUCT_PLATFORM" = "iOS" ]; then
     echo "Uploading to TestApp.io"
 
+    # Set the install directory
+    export INSTALL_DIR=$(pwd)
+
     # Download and install TestApp.io CLI
     curl -Ls https://github.com/testappio/cli/releases/latest/download/install | bash
 
     # Make the CLI executable
-    chmod +x ./ta-cli
+    chmod +x ${INSTALL_DIR}/ta-cli
 
     # Find the .ipa file in the specified directory
     IPA_FILE=$(find "$CI_AD_HOC_SIGNED_APP_PATH" -name "*.ipa" -print -quit)
@@ -17,5 +20,5 @@ if [ "$CI_PRODUCT_PLATFORM" = "iOS" ]; then
     fi
 
     # Publish using the found .ipa file
-    ./ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --ipa="$IPA_FILE" --git_release_notes=true --git_commit_id=true --notify=true --source="Xcode Cloud"
+    ${INSTALL_DIR}/ta-cli publish --api_token=$TESTAPPIO_API_TOKEN --app_id=$TESTAPPIO_APP_ID --release="ios" --ipa="$IPA_FILE" --git_release_notes=true --git_commit_id=true --archive_latest_release=false --notify=true --source="Xcode Cloud"
 fi
